@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Load ur5 in Gazebo -->
+	<include file="$(find icl_ur5_setup_gazebo)/launch/icl_ur5_gripper.launch">
+	</include>
+
+	<!-- Load rviz and moveit -->
+	<include file="$(find icl_ur5_setup_moveit_config)/launch/ur5_gripper_moveit_planning_execution.launch">
+		<arg name="sim" value="true"/>
+	</include>
+
+	<include file="$(find icl_ur5_setup_moveit_config)/launch/moveit_rviz.launch">
+		<arg name="config" value="true"/>
+	</include>
+
+	<!-- Load arm_jogging control -->
+	<include file="$(find jog_launch)/launch/ur5e.launch">
+	</include>
+
+</launch>
